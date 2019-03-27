@@ -1,0 +1,7 @@
+{
+  "mongosource": {
+    "url": "mongodb://amitParpiyaniP:jd#hN8qE$gA10Asc@35.154.80.117:27017/ImDB?authSource=admin&timeoutMS=2000000&socketTimeoutMS=6000000&authMechanism=SCRAM-SHA-1",
+    "name": "mongosource",
+    "connector": "mongodb"
+  }
+}

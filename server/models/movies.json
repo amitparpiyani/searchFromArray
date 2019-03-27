@@ -1,0 +1,48 @@
+{
+  "name": "movies",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tconst": {
+      "type": "string"
+    },
+    "titleType": {
+      "type": "string"
+    },
+    "primartTitle": {
+      "type": "string"
+    },
+    "originalTitle": {
+      "type": "string"
+    },
+    "isAdult": {
+      "type": "number",
+      "default": 0
+    },
+    "startYear": {
+      "type": "string"
+    },
+    "endYear": {
+      "type": "string"
+    },
+    "runTimeMinutes": {
+      "type": "number",
+      "default": 0
+    },
+    "genres": {
+      "type": "string"
+    },
+    "tags": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
