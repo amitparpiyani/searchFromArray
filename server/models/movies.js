@@ -4,6 +4,30 @@ module.exports = function(Movies) {
 
 
 
+    Movies.afterRemote('search', function (ctx, instance, next) {
+        next();
+        if(ctx.result.status == 200)
+        {
+            var app = require('../server');
+            var tagAnalytics = require('../models/tag-analytics');
+            var tagEventData = new Object();
+            tagEventData.name = ctx.args.tag;
+            tagEventData.resultCount = ctx.result.data.count;
+            tagEventData.city = getCity();
+            tagAnalytics.handleTagAnalytics(tagEventData);
+        }
+
+    });
+
+    function getCity(location, ip)
+    {   
+        //Temp hack idealy fetch city from location or ip addrs
+        var cities = ["Mumbai", "Banglore", "Delhi", "Kolkata", "Thane", "Kota", "Ahemdabad","Surat", "Jaipur","Pune"];
+        var index =  Math.floor(Math.random() * 9);
+        return cities[index];
+    }
+
+
     Movies.addDummyTags = function (userData,res, callback) {
         var genericTags = ["fun", "masala","original","hilarious", "tender","sensitive", "action-replay","boring", "ordinary", "static", "silly", "bland","uneven", "slow", "fast moving", "oddball", "wacky", "tired", "trite", "brutal", "moronic", "charismatic", "comical", "imaginative", "legendry", "dazzling", "low-budget","overratted", "impeccable", "slapdash comedy", "suspenseful expose", "poorly executed", "adventure", "animation", "foreign film", "musicals", "western", "marvelous", "awful", "awaiting", "riveting", "uproarious", "powerful", "legendary", "imaginative", "third-rate","glamorous", "Idiotic", "Ironic", "Mediocre visuals", "SRK", "RK", "Rajesh Khana", "90s","80s","DID", "ZEE","DID1", "DID2", "DID3","DID4", "DID5","Indian Idol","Indian Idol1", "Indian Idol2", "Indian Idol3", "Indian Idol4","SS", "SS1", "SS2","SS3","SS4","SS5","SABTV", "SARE GAMA PA","Jodha Akhbar","Bhootu", "Chattan", "Gudgudee", "Sethji", "Shobha Somnath Ki"]
         Movies.find({"skip": userData.skip,"limit": userData.limit},function(err,movieInstances){

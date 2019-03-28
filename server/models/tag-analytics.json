@@ -1,0 +1,32 @@
+{
+  "name": "tagAnalytics",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "city": {
+      "type": "string",
+      "default" : "Mumbai"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "deviceType": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
