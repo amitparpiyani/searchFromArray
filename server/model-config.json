@@ -16,5 +16,9 @@
   "movies": {
     "dataSource": "mongosource",
     "public": true
+  },
+  "tagAnalytics": {
+    "dataSource": "mongosource",
+    "public": true
   }
 }
